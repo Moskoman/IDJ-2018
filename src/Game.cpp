@@ -1,6 +1,5 @@
 #include "../include/Game.h"
 
-
 Game* Game::instance = nullptr;
 
 
@@ -26,8 +25,9 @@ Game::Game(string Title, int WIDTH, int HEIGHT) {
 	window = SDL_CreateWindow(Title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-	state = new State();
+	instance = this;
 
+	state = new State();
 };
 
 Game::~Game() {
@@ -70,6 +70,7 @@ Game* Game::GetInstance() {
 };
 
 void Game::Run() {
+	state->Update(0.1);
 	state->Render();
 	SDL_RenderPresent(GetRenderer());
 	SDL_Delay(33);

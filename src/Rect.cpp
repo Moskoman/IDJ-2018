@@ -1,5 +1,5 @@
 #include "../include/Rect.h"
-#include "../include/Vector2.h"
+#include "../include/Vec2.h"
 
 Rect::Rect() {
 	x = 0;
@@ -18,14 +18,18 @@ Rect::Rect(float x, float y, float w, float h) {
 
 Rect::~Rect() {};
 
-Vector2 Rect::Center() {
+Vec2 Rect::Center() {
 
 	float centerX = x + (w / 2);
 	float centerY = y + (h / 2);
-	Vector2 vec2(centerX, centerY);
+	Vec2 vec2(centerX, centerY);
 
 	return vec2;
 };
 
-
+bool Rect::Contains(float posX, float posY) {
+	if (posX < x || posX > x + w) return false;
+	if (posY < y || posY > y + h) return false;
+	return true;
+}
 

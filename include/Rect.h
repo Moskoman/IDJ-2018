@@ -1,5 +1,5 @@
 #pragma once
-#include "Vector2.h"
+#include "Vec2.h"
 
 class Rect {
 
@@ -10,6 +10,8 @@ public:
 	~Rect();
 
 	float x, y, w, h;
-	Vector2 Center();
+	Vec2 Center();
+
+	bool Contains(float posX, float posY);
 
 };

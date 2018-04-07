@@ -1,0 +1,30 @@
+#pragma once
+#include "Component.h"
+#include <iostream>
+#define INCLUDE_SDL 
+#define INCLUDE_SDL_MIXER
+#define INCLUDE_SDL_IMAGE
+#include "SDL_include.h"
+using std::string;
+
+class Sound : public Component {
+
+public:
+	Sound(GameObject *associated);
+	Sound(GameObject *associated, string file);
+	~Sound();
+
+	void Play(int times = 1);
+	void Stop();
+	void Open(string file);
+	bool IsOpen();
+	void Update();
+	void Render();
+	bool Is(string type);
+
+private:
+
+	Mix_Chunk * chunk;
+	int channel;
+
+};

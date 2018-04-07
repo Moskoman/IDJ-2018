@@ -5,22 +5,26 @@
 #define INCLUDE_SDL_IMAGE
 #include "SDL_include.h"
 #include <iostream>
+#include <memory>
 #include <string>
+#include "Component.h"
 using namespace std;
 
-class Sprite {
+class Sprite : public Component {
 
 public:
 
-	Sprite();
-	Sprite(string filePath);
+	Sprite(GameObject *associated);
+	Sprite(GameObject *associated, string filePath);
 	~Sprite();
 	void Open(string filePath);
 	void SetClip(int x, int y, int w, int h);
-	void Render(int x, int y);
+	void Render();
 	int GetWidth();
 	int GetHeight();
 	bool IsOpen();
+	void Update();
+	bool Is(string type);
 
 private:
 
@@ -31,4 +35,4 @@ private:
 
 };
 
-#endif //SPRITE_H
+#endif SPRITE_H

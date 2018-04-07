@@ -5,6 +5,11 @@
 #include "SDL_include.h"
 #include "Sprite.h"
 #include "Music.h"
+#include <memory>
+#include <vector>
+#include "Face.h"
+#include "GameObject.h"
+using std::vector;
 
 class State {
 
@@ -21,9 +26,14 @@ public:
 
 	void Render();
 
+	void Input();
+
+	void AddObject(int posX, int posY);
+	
+
 private:
 
-	Sprite bg;
+	vector <unique_ptr <GameObject>> objectArray;
 
 	Music music;
 
